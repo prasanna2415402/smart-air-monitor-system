@@ -1,0 +1,16 @@
+Django==5.2.16
+djangorestframework==3.17.1
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.9.0
+django-filter==25.2
+drf-yasg==1.21.15
+python-dotenv==1.1.1
+Pillow==11.3.0
+psycopg2-binary==2.9.11
+gunicorn==23.0.0
+whitenoise==6.11.0
+
+# --- AI / ML prediction module (apps.ai, ported from smart_iaq_system) ---
+numpy==2.2.6
+pandas==2.2.3
+scikit-learn==1.6.1

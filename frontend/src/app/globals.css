@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 28% 17%;
+    --border: 215 28% 25%;
+    --input: 215 28% 25%;
+  }
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.input-focus {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-focus:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  border-color: rgb(59 130 246);
+}
+
+.password-strength {
+  height: 3px;
+  transition: all 0.3s ease;
+}
+
+.industrial-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+}
+
+.role-badge {
+  transition: all 0.2s ease;
+}
+
+.role-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* ---------------------------------------------------------------- */
+/* Auth pages (login / signup) visual system                         */
+/* ---------------------------------------------------------------- */
+
+.auth-form-motion {
+  animation: form-enter 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.auth-success {
+  animation: success-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.success-mark {
+  animation: success-pulse 1.9s ease-in-out infinite;
+}
+
+.check-draw path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: check-draw 560ms 190ms ease-out forwards;
+}
+
+.sensor-grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.08) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at 45% 40%, black, transparent 72%);
+}
+
+.ambient-cloud {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.2), rgba(59, 130, 246, 0.04) 56%, transparent 72%);
+  filter: blur(3px);
+  opacity: 0.65;
+  animation: cloud-drift 18s ease-in-out infinite;
+}
+
+.ambient-cloud-one {
+  top: 18%;
+  left: 4%;
+  width: 280px;
+  height: 120px;
+}
+
+.ambient-cloud-two {
+  right: 10%;
+  bottom: 14%;
+  width: 320px;
+  height: 150px;
+  animation-delay: -8s;
+}
+
+.sensor-stage {
+  position: relative;
+  filter: drop-shadow(0 34px 70px rgba(20, 184, 166, 0.14));
+}
+
+.sensor-stage::before {
+  position: absolute;
+  inset: 13%;
+  content: "";
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle, rgba(94, 234, 212, 0.22), transparent 58%),
+    radial-gradient(circle at 35% 30%, rgba(96, 165, 250, 0.2), transparent 38%);
+  animation: aura-breathe 5.8s ease-in-out infinite;
+}
+
+.sensor-stage::after {
+  position: absolute;
+  inset: 7%;
+  content: "";
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  border-radius: 9999px;
+  box-shadow: inset 0 0 70px rgba(45, 212, 191, 0.08);
+  animation: orbit-tilt 12s linear infinite;
+}
+
+.airflow-line {
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-dasharray: 18 22;
+  animation: airflow-dash 4.8s linear infinite;
+  opacity: 0.82;
+}
+
+.airflow-line-two {
+  animation-duration: 6.4s;
+  animation-delay: -1.6s;
+  opacity: 0.62;
+}
+
+.airflow-line-three {
+  animation-duration: 5.6s;
+  animation-delay: -2.6s;
+  opacity: 0.52;
+}
+
+.sensor-orbit {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  box-shadow: 0 0 34px rgba(45, 212, 191, 0.07);
+}
+
+.sensor-orbit-one {
+  inset: 17%;
+  animation: orbit-spin 16s linear infinite;
+}
+
+.sensor-orbit-two {
+  inset: 26%;
+  border-color: rgba(94, 234, 212, 0.28);
+  animation: orbit-spin 11s linear infinite reverse;
+}
+
+.sensor-orbit-three {
+  inset: 37%;
+  border-color: rgba(147, 197, 253, 0.22);
+  animation: orbit-spin 8s linear infinite;
+}
+
+.sensor-orbit::before {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  content: "";
+  border-radius: 9999px;
+  background: #67e8f9;
+  box-shadow: 0 0 22px #67e8f9;
+}
+
+.air-particle {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 9999px;
+  background: rgba(103, 232, 249, 0.95);
+  box-shadow: 0 0 18px rgba(103, 232, 249, 0.85);
+  animation: particle-float var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.sensor-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 35%;
+  height: 35%;
+  min-width: 112px;
+  min-height: 112px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 34%;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, 0.78), rgba(8, 47, 73, 0.46)),
+    radial-gradient(circle at 30% 20%, rgba(103, 232, 249, 0.28), transparent 42%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 24px 70px rgba(2, 8, 23, 0.55),
+    0 0 46px rgba(45, 212, 191, 0.24);
+  transform: translate(-50%, -50%);
+  animation: core-float 6s ease-in-out infinite;
+}
+
+.sensor-core-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #5eead4;
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.9);
+}
+
+.sensor-core-dot-one {
+  top: 18%;
+  right: 18%;
+}
+
+.sensor-core-dot-two {
+  bottom: 20%;
+  left: 20%;
+  background: #93c5fd;
+}
+
+.sensor-core-dot-three {
+  right: 24%;
+  bottom: 18%;
+  width: 5px;
+  height: 5px;
+  background: #cffafe;
+}
+
+@keyframes form-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes success-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes success-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 44px rgba(45, 212, 191, 0.24);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 68px rgba(45, 212, 191, 0.38);
+  }
+}
+
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cloud-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(34px, -18px, 0) scale(1.08);
+  }
+}
+
+@keyframes aura-breathe {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes orbit-tilt {
+  from {
+    transform: rotate(0deg) scaleX(1.02);
+  }
+
+  to {
+    transform: rotate(360deg) scaleX(1.02);
+  }
+}
+
+@keyframes airflow-dash {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate3d(20px, -24px, 0) scale(1.65);
+  }
+}
+
+@keyframes core-float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-form-motion,
+  .auth-success,
+  .success-mark,
+  .check-draw path,
+  .ambient-cloud,
+  .sensor-stage::before,
+  .sensor-stage::after,
+  .airflow-line,
+  .sensor-orbit-one,
+  .sensor-orbit-two,
+  .sensor-orbit-three,
+  .air-particle,
+  .sensor-core {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+db.sqlite3
+/media/profile_photos/*
+!/media/profile_photos/.gitkeep
+/media/backups/*
+!/media/backups/.gitkeep
+/staticfiles/*
+!/staticfiles/.gitkeep
+/logs/*.log
+.DS_Store
+venv/
+.venv/
