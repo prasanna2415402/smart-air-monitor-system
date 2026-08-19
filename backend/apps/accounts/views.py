@@ -84,7 +84,7 @@ class LoginView(TokenObtainPairView):
             user_agent=request.META.get("HTTP_USER_AGENT", "")[:255],
         )
 
-        send_login_success_email(User.objects.get(id=data["user"]["id"]))
+       # send_login_success_email(User.objects.get(id=data["user"]["id"]))   Temp close reason deploy
 
         return success_response(
             data=data,
