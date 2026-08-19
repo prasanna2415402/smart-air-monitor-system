@@ -198,6 +198,10 @@ CSRF_TRUSTED_ORIGINS = env_list(
     "http://localhost:3000,http://127.0.0.1:3000",
 )
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 # Render runs Django behind an HTTPS reverse proxy
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
