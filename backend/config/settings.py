@@ -24,6 +24,8 @@ def env_list(key, default=""):
 # ------------------------------------------------------------------ CORE
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-dev-only-change-me")
 DEBUG = env_bool("DEBUG", True)
+
+#------------------------------------------------------------ new change after deploy
 ALLOWED_HOSTS = [
     "smart-air-monitor-system.onrender.com",
     "localhost",
@@ -185,9 +187,19 @@ SIMPLE_JWT = {
 
 # ------------------------------------------------------------------ CORS
 CORS_ALLOWED_ORIGINS = env_list(
-    "CORS_ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+    "CORS_ALLOWED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000",
 )
+
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000",
+)
+
+# Render runs Django behind an HTTPS reverse proxy
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # ------------------------------------------------------------------ EMAIL
 EMAIL_BACKEND = os.getenv(
