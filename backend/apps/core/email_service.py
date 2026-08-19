@@ -1,6 +1,10 @@
+import logging
+
 from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
+
+logger = logging.getLogger(__name__)
 
 
 def send_login_success_email(user):
@@ -27,13 +31,16 @@ Your login was successful.
 Smart Air Monitor System
 """
 
-    send_mail(
-        subject=subject,
-        message=message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[user.email],
-        fail_silently=False,
-    )
+    try:
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        logger.exception("Login success email failed: %s", e)
 
 
 def send_alert_email(user, station, alert):
@@ -75,10 +82,13 @@ Please check the Smart Air Monitor dashboard for the latest readings.
 Smart Air Monitor System
 """
 
-    send_mail(
-        subject=subject,
-        message=message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[user.email],
-        fail_silently=False,
-    )
+    try:
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        logger.exception("Alert email failed: %s", e)
