@@ -25,12 +25,10 @@ def env_list(key, default=""):
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-dev-only-change-me")
 DEBUG = env_bool("DEBUG", True)
 ALLOWED_HOSTS = [
+    "smart-air-monitor-system.onrender.com",
     "localhost",
     "127.0.0.1",
-    "192.168.31.137",
-    "testserver",
 ]
-
 # ------------------------------------------------------------------ APPS
 INSTALLED_APPS = [
     "django.contrib.admin",
